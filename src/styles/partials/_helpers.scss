@@ -1,0 +1,133 @@
+// Helper classes
+@import '../abstracts/variables';
+// this generates the margin and padding helper classes.  they are built using em's to ensure responsiveness.
+// helper classes are written as follows -
+// Direction | style (margin/padding) | size (based in em multiples of 1/3's)
+
+// to select both left and right you would us the X coordinates
+// eg. xm3 = margin-left: 1em; margin-right: 1em;
+// eg. yp1 = padding-top: .3333333125em; padding-bottom: .3333333125em;
+// eg pt2 = padding-top: .666666625;
+
+@each $size in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30) {
+    $relativeSize: $size * 0.3333333125;
+    .m#{$size} {
+        // Force layout adjustments
+        // scss-lint:disable ImportantRule
+        margin: $relativeSize + em !important;
+    }
+    .p#{$size} {
+        // Force layout adjustments
+        // scss-lint:disable ImportantRule
+        padding: $relativeSize + em !important;
+    }
+    @each $dir,
+    $direction in (
+        't': 'top',
+        'r': 'right',
+        'b': 'bottom',
+        'l': 'left',
+        'x': 'horizontal',
+        'y': 'vertical'
+    ) {
+        .m#{$dir}#{$size} {
+            // Force layout adjustments
+            // scss-lint:disable ImportantRule
+            @if $dir=="x" {
+                margin-left: $relativeSize + em !important;
+                margin-right: $relativeSize + em !important;
+            } @else if $dir=="y" {
+                margin-top: $relativeSize + em !important;
+                margin-bottom: $relativeSize + em !important;
+            } @else {
+                margin-#{$direction}: $relativeSize + em !important;
+            }
+        }
+        .p#{$dir}#{$size} {
+            // Force layout adjustments
+            // scss-lint:disable ImportantRule
+            @if $dir=="x" {
+                padding-left: $relativeSize + em !important;
+                padding-right: $relativeSize + em !important;
+            } @else if $dir=="y" {
+                padding-top: $relativeSize + em !important;
+                padding-bottom: $relativeSize + em !important;
+            } @else {
+                padding-#{$direction}: $relativeSize + em !important;
+            }
+        }
+    }
+}
+
+
+
+/*-------------------------
+   Color helpers.
+ -------------------------*/
+.color-1 {
+    color: $color-accent-1;
+}
+
+.color-bg-1 {
+    background-color:  $color-accent-1;
+}
+
+.color-2 {
+    color: $color-accent-2;
+}
+
+.color-bg-2 {
+    background-color: $color-accent-2;
+}
+
+.color-white {
+    color: $white;
+}
+
+.color-bg-white {
+    background-color: white;
+}
+
+/*-------------------------
+   layout helpers.
+ -------------------------*/
+.inline {
+  display: inline-block;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+/*-------------------------
+   Font helpers.
+ -------------------------*/
+
+
+.font-secondary {
+    font-family: $primary-font-bold;
+}
+
+.text-large-x {
+    font-size: $text-x-lg;
+}
+
+.text-large {
+    font-size: $text-lg;
+}
+
+.text-small {
+    font-size: $text-sm;
+}
+
+.text-small-x {
+    font-size: $text-x-sm;
+}
+
+.relative {
+    position: relative;
+}

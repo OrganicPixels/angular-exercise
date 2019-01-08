@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<header class="center flex flex-justify flex-center p2 bg-lime white">
+  <span class="sm-flex"></span>
+  <h3 class="md-flex">Lunch Tyme</h3>
+  <img class="sm-flex" src="assets/images/icon_map@2x.png" alt="" (click)="sidePanel.sidePanelToggle(isOpen)">
+</header>
+<main    class="flex flex-wrap">
+  <article *ngFor="let location of locations; let i = $index"
+           class="flex pt30"
+           (click)="selectLocation(location)"
+           [ngStyle]="{ 'background-image': 'url(' + location.backgroundImageURL + ')'}"
+  >
+    <footer class="white pb1 pl2">
+      <h1>
+        {{location.name}}
+      </h1>
+      <h4>
+        {{location.category}}
+      </h4>
+    </footer>
+    <span class="overlay">
+    </span>
+  </article>
+</main>
+<app-side-panel [details]="activeLocation" #sidePanel ([isOpen])="isOpen"></app-side-panel>
+

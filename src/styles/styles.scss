@@ -1,0 +1,13 @@
+/* ------------------------------------
+   Sstyles
+-------------------------------------- */
+/* You can add global styles to this file, and also import other style files */
+@import '/abstracts/variables';
+@import "/partials/fonts";
+@import "/partials/css-reset";
+@import "/partials/flex";
+@import "/partials/helpers";
+
+body, html {
+  font: 16px $primary-font;
+}

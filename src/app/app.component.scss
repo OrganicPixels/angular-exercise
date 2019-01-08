@@ -1,0 +1,27 @@
+header {
+  z-index: 10;
+  img {
+    max-width: 2rem;
+  }
+}
+
+article {
+  position: relative;
+  background: no-repeat center;
+  background-size: cover;
+  flex-basis: 20rem;
+  flex-grow: 1;
+  cursor: pointer;
+
+  footer {
+    z-index: 2;
+  }
+  .overlay {
+    content: url('/assets/images/cellGradientBackground@2x.png');
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+}

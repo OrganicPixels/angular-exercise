@@ -1,0 +1,13 @@
+@charset "utf-8";
+$parentDirectory: '/assets/fonts/avenir-font/';
+
+@font-face {
+    font-family: "Avenir Next Regular";
+    src: url(#{$parentDirectory}avenir-next-regular.woff) format('woff');
+    src: url(#{$parentDirectory}avenir-next-regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "Avenir Next Demi Bold";
+    src: url(#{$parentDirectory}avenir-next-demi-bold.ttf) format('truetype');
+}

@@ -1,0 +1,90 @@
+// Here are some helper classes for the most common Flexbox rules. These should be used to quickly layout a view and eliminate some of the most common css rules we have to write.
+// Check out https://css-tricks.com/snippets/css/a-guide-to-flexbox/ for a better understanding of how to use Flexbox,
+
+.flex {
+    display: flex;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-align-stretch{
+    align-items: stretch;
+}
+
+.flex-align-end {
+    align-items: flex-end;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-justify-end {
+    justify-content: flex-end;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    justify-content: space-around;
+}
+
+.flex-1 {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.flex-2 {
+    flex-grow: 2;
+    flex-shrink: 2;
+}
+
+.flex-3 {
+    flex-grow: 3;
+    flex-shrink: 3;
+}
+
+.flex-4 {
+    flex-grow: 4;
+    flex-shrink: 4;
+}
+
+.align-self-start {
+    align-self: flex-start;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.align-self-end {
+    align-self: flex-end;
+}
+
+.mobile, .mobile--flex {
+    display: none;
+}
+
+@media only screen and (max-width: 680px) {
+    .desktop {
+        display: none !important;
+    }
+    .mobile {
+        display: block;
+        &--flex {
+            display: flex;
+        }
+    }
+}

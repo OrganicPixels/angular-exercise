@@ -1,0 +1,19 @@
+<div  id="side-panel"><agm-map [latitude]="details?.location.lat" [longitude]="details?.location.lng" [zoom]="15" class="pt10">
+  <agm-marker [latitude]="details?.location.lat" [longitude]="details?.location.lng" [title]="details?.name">
+    <agm-info-window>{{details?.name}}</agm-info-window>
+  </agm-marker>
+</agm-map>
+<section class="bg-green white p3">
+  <h1>
+    {{details?.name}}
+  </h1>
+</section>
+<section class="pt3 pl3">
+  <p class="pb5">
+    {{details?.location.address}}<br>
+    {{details?.location.city}}, {{details?.location.state}} {{details?.location.postalCode}}
+  </p>
+  <p class="pb5">{{details?.contact?.formattedPhone}}</p>
+  <p *ngIf="details?.contact?.twitter">@{{details?.contact?.twitter}}</p>
+</section>
+</div>
