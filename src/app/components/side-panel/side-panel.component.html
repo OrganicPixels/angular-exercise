@@ -1,19 +1,67 @@
-<div  id="side-panel"><agm-map [latitude]="details?.location.lat" [longitude]="details?.location.lng" [zoom]="15" class="pt10">
-  <agm-marker [latitude]="details?.location.lat" [longitude]="details?.location.lng" [title]="details?.name">
-    <agm-info-window>{{details?.name}}</agm-info-window>
-  </agm-marker>
-</agm-map>
-<section class="bg-green white p3">
-  <h1>
-    {{details?.name}}
-  </h1>
-</section>
-<section class="pt3 pl3">
-  <p class="pb5">
-    {{details?.location.address}}<br>
-    {{details?.location.city}}, {{details?.location.state}} {{details?.location.postalCode}}
-  </p>
-  <p class="pb5">{{details?.contact?.formattedPhone}}</p>
-  <p *ngIf="details?.contact?.twitter">@{{details?.contact?.twitter}}</p>
-</section>
+<div [@panelState]="isOpen ?   'hide' : 'show'" id="side-panel">
+    <agm-map
+            [latitude]="details?.location?.lat"
+            [longitude]="details?.location?.lng"
+            [zoom]="allLocations ? 14 : 18"
+            [streetViewControl]="false"
+            [zoomControl]="false"
+            [streetViewControlOptions]="false"
+    >
+        <ng-container *ngFor="let location of locations" >
+            <agm-marker
+                    [latitude]="location?.location.lat"
+                    [longitude]="location?.location.lng"
+                    [title]="location.name" class="flex-1"
+            >
+            </agm-marker>
+        </ng-container>
+        <agm-marker
+                [latitude]="details?.location.lat"
+                [longitude]="details?.location.lng"
+                [title]="details?.name" class="flex-1">
+            <agm-info-window
+                    [isOpen]="true"
+            >
+                <article class="marker-info">
+                    <header class="flex flex-align-center">
+                        <img [src]="details?.backgroundImageURL" alt="" />
+                        <h1 class="">{{details?.name}}</h1>
+                    </header>
+                    <footer class="flex flex-align-center flex-space-between pt3">
+                        <a [href]="details?.contact?.phone">{{details?.contact?.formattedPhone}}</a> <span class="pl3">{{details?.category}}</span>
+                    </footer>
+                </article>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+    <section class="bg-green white p3">
+        <h1>
+            {{ allLocations ? 'Restaurants' :  details?.name}}
+        </h1>
+    </section>
+    <section class="py3 color-bg-white flex-1">
+       <ng-container *ngIf="!allLocations" class="pl3">
+           <article class="pl3">
+            <p class="pb5">
+                {{details?.location.address}}<br>
+                {{details?.location.city}}, {{details?.location.state}} {{details?.location.postalCode}}
+            </p>
+            <p class="pb5">{{details?.contact?.formattedPhone}}</p>
+            <p *ngIf="details?.contact?.twitter">@{{details?.contact?.twitter}}</p>
+        </article>
+       </ng-container>
+        <ng-container *ngIf="allLocations" >
+        <article  *ngFor="let restaurant of locations" class="border-bottom py3 pl3">
+
+                <h1 class="font-bold pb3">{{restaurant?.name}}</h1>
+                <p class="text-small">
+                    {{restaurant?.location.address}}<br>
+                    {{restaurant?.location.city}}, {{restaurant?.location.state}} {{restaurant?.location.postalCode}}
+                </p>
+                <p class="pt3">{{restaurant?.contact?.formattedPhone}}</p>
+                <p class="pt3" *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
+        </article>
+        </ng-container>
+
+    </section>
 </div>

@@ -1,7 +1,13 @@
 header {
+  position: fixed;
+  width: 100%;
   z-index: 10;
+  box-sizing: border-box;
   img {
     max-width: 2rem;
+    &:first-child {
+      max-height: 1.5rem;
+    }
   }
 }
 
@@ -9,10 +15,9 @@ article {
   position: relative;
   background: no-repeat center;
   background-size: cover;
-  flex-basis: 20rem;
+  flex-basis: 25rem;
   flex-grow: 1;
   cursor: pointer;
-
   footer {
     z-index: 2;
   }

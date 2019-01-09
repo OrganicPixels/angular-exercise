@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ApplicationRef } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { SidePanelComponent } from './components/side-panel/side-panel.component';
@@ -13,6 +13,7 @@ import { SidePanelComponent } from './components/side-panel/side-panel.component
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAQrtEK-XD6oe3PYrqQkWrCxjJhNolk-8o'
@@ -20,6 +21,6 @@ import { SidePanelComponent } from './components/side-panel/side-panel.component
   ],
   providers: [],
 
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
