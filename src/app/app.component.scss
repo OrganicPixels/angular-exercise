@@ -1,6 +1,8 @@
+@import '~src/styles/base/variables';
 header {
   position: fixed;
   width: 100%;
+  height: $headerHeight;
   z-index: 10;
   box-sizing: border-box;
   img {
@@ -8,6 +10,7 @@ header {
     &:first-child {
       max-height: 1.5rem;
     }
+
   }
 }
 
@@ -15,9 +18,15 @@ article {
   position: relative;
   background: no-repeat center;
   background-size: cover;
-  flex-basis: 25rem;
-  flex-grow: 1;
-  cursor: pointer;
+  flex-basis: 50%;
+  @media only screen and (max-device-width : 1024px)  and (orientation : portrait) {
+    flex-basis: 20rem;
+  }
+  @media only screen and (max-width: 400px) {
+    flex-basis: 100%;
+  }
+
+
   footer {
     z-index: 2;
   }
@@ -28,5 +37,17 @@ article {
     height: 100%;
     width: 100%;
     z-index: 1;
+  }
+}
+main {
+  transition: max-width 200ms ease-in-out;
+  max-width: 100%;
+  padding-top: $headerHeight;
+  &.active{
+    max-width: calc(100% - 24rem);
+
+    @media only screen and (max-device-width : 1024px)  and (orientation : portrait) {
+        max-width: calc(100% - 20rem);
+    }
   }
 }

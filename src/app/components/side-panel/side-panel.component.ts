@@ -15,7 +15,7 @@ import {Restaurant} from '../../classes/base';
                 transform: 'translateX(106%)'
             })),
             transition('show => hide', animate('200ms ease-in-out')),
-            transition('hide => show', animate('300ms ease-in-out'))
+            transition('hide => show', animate('200ms ease-in-out'))
         ])
     ]
 })
@@ -23,10 +23,16 @@ export class SidePanelComponent  implements OnInit {
     @Input() details: object;
     @Input() locations: Restaurant;
     @Input() isOpen = false;
+
     @Input() allLocations: boolean;
+    zoomLevel = 18;
     constructor(
     ) {}
 
     ngOnInit() {
+    }
+    updateSelection(detail) {
+        this.details = detail;
+        this.allLocations = false;
     }
 }

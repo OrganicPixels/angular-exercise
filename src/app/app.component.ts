@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Restaurant } from './classes/base';
+import {Component, OnInit, Input} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Restaurant} from './classes/base';
 
 @Component({
     selector: 'app-root',
@@ -14,19 +14,22 @@ export class AppComponent implements OnInit {
     allLocations = false;
 
     private activeSelection: Restaurant = null;
-    constructor(private http: HttpClient) {
-    }
+
+    constructor(private http: HttpClient) { }
 
     selectLocation(selection) {
         this.activeSelection = selection;
     }
+
     closePanel() {
         this.isOpen = false;
     }
+
     openPanel() {
         this.allLocations = !this.activeSelection ? true : false;
         this.isOpen = true;
     }
+
     togglePanel(target) {
         if (target !== this.activeSelection || this.isOpen === false) {
             this.selectLocation(target);

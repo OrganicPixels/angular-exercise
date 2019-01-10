@@ -2,57 +2,58 @@
     <agm-map
             [latitude]="details?.location?.lat"
             [longitude]="details?.location?.lng"
-            [zoom]="allLocations ? 14 : 18"
+            [zoom]="zoomLevel"
             [streetViewControl]="false"
+            [fitBounds]="allLocations"
             [zoomControl]="false"
             [streetViewControlOptions]="false"
     >
-        <ng-container *ngFor="let location of locations" >
+        <ng-container *ngFor="let location of locations">
             <agm-marker
                     [latitude]="location?.location.lat"
                     [longitude]="location?.location.lng"
-                    [title]="location.name" class="flex-1"
+                    [title]="location?.name"
+                    class="flex-1"
             >
+                <!--[iconUrl]="location?.backgroundImageURL"-->
+                <agm-info-window>
+                    <article class="marker-info">
+                        <header class="flex flex-align-center">
+                            <img [src]="location?.backgroundImageURL" alt=""/>
+                            <h1 class="">{{location?.name}}</h1>
+                        </header>
+                        <footer class="flex flex-align-center flex-space-between pt3">
+                            <a [href]="location?.contact?.phone">{{location?.contact?.formattedPhone}}</a> <span class="pl3">{{location?.category}}</span>
+                        </footer>
+                    </article>
+                </agm-info-window>
             </agm-marker>
         </ng-container>
-        <agm-marker
+      <!--  <agm-marker
                 [latitude]="details?.location.lat"
                 [longitude]="details?.location.lng"
                 [title]="details?.name" class="flex-1">
-            <agm-info-window
-                    [isOpen]="true"
-            >
-                <article class="marker-info">
-                    <header class="flex flex-align-center">
-                        <img [src]="details?.backgroundImageURL" alt="" />
-                        <h1 class="">{{details?.name}}</h1>
-                    </header>
-                    <footer class="flex flex-align-center flex-space-between pt3">
-                        <a [href]="details?.contact?.phone">{{details?.contact?.formattedPhone}}</a> <span class="pl3">{{details?.category}}</span>
-                    </footer>
-                </article>
-            </agm-info-window>
-        </agm-marker>
+
+        </agm-marker>-->
     </agm-map>
-    <section class="bg-green white p3">
+    <section class="color-bg-2 white p3">
         <h1>
-            {{ allLocations ? 'Restaurants' :  details?.name}}
+            {{ allLocations ? 'Restaurants' : details?.name}}
         </h1>
     </section>
-    <section class="py3 color-bg-white flex-1">
-       <ng-container *ngIf="!allLocations" class="pl3">
-           <article class="pl3">
-            <p class="pb5">
-                {{details?.location.address}}<br>
-                {{details?.location.city}}, {{details?.location.state}} {{details?.location.postalCode}}
-            </p>
-            <p class="pb5">{{details?.contact?.formattedPhone}}</p>
-            <p *ngIf="details?.contact?.twitter">@{{details?.contact?.twitter}}</p>
-        </article>
-       </ng-container>
-        <ng-container *ngIf="allLocations" >
-        <article  *ngFor="let restaurant of locations" class="border-bottom py3 pl3">
-
+    <section class="py3 color-bg-white flex-1 scroll-container">
+        <ng-container *ngIf="!allLocations" class="pl3">
+            <article class="pl3">
+                <p class="pb5">
+                    {{details?.location.address}}<br>
+                    {{details?.location.city}}, {{details?.location.state}} {{details?.location.postalCode}}
+                </p>
+                <p class="pb5">{{details?.contact?.formattedPhone}}</p>
+                <p *ngIf="details?.contact?.twitter">@{{details?.contact?.twitter}}</p>
+            </article>
+        </ng-container>
+        <ng-container *ngIf="allLocations">
+            <article *ngFor="let restaurant of locations; let id = $index" class="border-bottom py3 pl3" (click)="updateSelection(restaurant)">
                 <h1 class="font-bold pb3">{{restaurant?.name}}</h1>
                 <p class="text-small">
                     {{restaurant?.location.address}}<br>
@@ -60,8 +61,7 @@
                 </p>
                 <p class="pt3">{{restaurant?.contact?.formattedPhone}}</p>
                 <p class="pt3" *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
-        </article>
+            </article>
         </ng-container>
-
     </section>
 </div>
