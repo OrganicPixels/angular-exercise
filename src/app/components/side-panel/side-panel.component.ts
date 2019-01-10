@@ -32,8 +32,7 @@ export class SidePanelComponent  implements OnInit {
     ngOnInit() {
     }
     clearSelections() {
-        let i = 0;
-        for (i  < this.locations.length; i++;) {
+        for (const i in this.locations) {
             this.locations[i].selected = false;
         }
     }
