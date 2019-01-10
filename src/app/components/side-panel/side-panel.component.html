@@ -1,11 +1,13 @@
 <div [@panelState]="isOpen ?   'hide' : 'show'" id="side-panel">
+    <!--<pre>{{details | json}}</pre>-->
     <agm-map
-            [latitude]="details?.location?.lat"
-            [longitude]="details?.location?.lng"
+            [latitude]="location?.location?.lat"
+            [longitude]="location?.location?.lng"
             [zoom]="zoomLevel"
+            [fitBounds]="true"
             [streetViewControl]="false"
-            [fitBounds]="allLocations"
             [zoomControl]="false"
+            maxZoom="18"
             [streetViewControlOptions]="false"
     >
         <ng-container *ngFor="let location of locations">
@@ -13,28 +15,24 @@
                     [latitude]="location?.location.lat"
                     [longitude]="location?.location.lng"
                     [title]="location?.name"
+                    [agmFitBounds]="location.selected || allLocations"
+                    [iconUrl]="'assets/images/marker.png'"
                     class="flex-1"
             >
-                <!--[iconUrl]="location?.backgroundImageURL"-->
                 <agm-info-window>
                     <article class="marker-info">
                         <header class="flex flex-align-center">
-                            <img [src]="location?.backgroundImageURL" alt=""/>
-                            <h1 class="">{{location?.name}}</h1>
+                            <img [src]="location?.backgroundImageURL" [alt]="location?.name"/>
+                            <h1>{{location?.name}}</h1>
                         </header>
                         <footer class="flex flex-align-center flex-space-between pt3">
-                            <a [href]="location?.contact?.phone">{{location?.contact?.formattedPhone}}</a> <span class="pl3">{{location?.category}}</span>
+                            <a [href]="location?.contact?.phone">{{location?.contact?.formattedPhone}}</a>
+                            <span class="pl3">{{location?.category}}</span>
                         </footer>
                     </article>
                 </agm-info-window>
             </agm-marker>
         </ng-container>
-      <!--  <agm-marker
-                [latitude]="details?.location.lat"
-                [longitude]="details?.location.lng"
-                [title]="details?.name" class="flex-1">
-
-        </agm-marker>-->
     </agm-map>
     <section class="color-bg-2 white p3">
         <h1>
@@ -53,9 +51,10 @@
             </article>
         </ng-container>
         <ng-container *ngIf="allLocations">
-            <article *ngFor="let restaurant of locations; let id = $index" class="border-bottom py3 pl3" (click)="updateSelection(restaurant)">
+            <article *ngFor="let restaurant of locations; let id = $index" class="py3 pl3" [class.border-bottom]="allLocations"
+                     (click)="updateSelection(restaurant)">
                 <h1 class="font-bold pb3">{{restaurant?.name}}</h1>
-                <p class="text-small">
+                <p>
                     {{restaurant?.location.address}}<br>
                     {{restaurant?.location.city}}, {{restaurant?.location.state}} {{restaurant?.location.postalCode}}
                 </p>

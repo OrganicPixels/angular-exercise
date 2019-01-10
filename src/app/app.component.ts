@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Restaurant} from './classes/base';
+import { Restaurant } from './classes/base';
 
 @Component({
     selector: 'app-root',
@@ -9,39 +9,47 @@ import {Restaurant} from './classes/base';
 })
 
 export class AppComponent implements OnInit {
-    locations: Restaurant;
+    locations: Restaurant[];
     isOpen = false;
     allLocations = false;
-
     private activeSelection: Restaurant = null;
 
     constructor(private http: HttpClient) { }
 
-    selectLocation(selection) {
-        this.activeSelection = selection;
+    ngOnInit(): void {
+        this.http.get('https://s3.amazonaws.com/br-codingexams/restaurants.json').subscribe(res => {
+            this.locations = res['restaurants'].map(rest => new Restaurant(rest));
+        });
+    }
+
+    toggleFullMap() {
+        this.allLocations ? this.closePanel() : this.openPanel();
+        this.allLocations = !this.allLocations;
+    }
+
+    openPanel() {
+        this.isOpen = true;
     }
 
     closePanel() {
         this.isOpen = false;
     }
 
-    openPanel() {
-        this.allLocations = !this.activeSelection ? true : false;
-        this.isOpen = true;
-    }
-
-    togglePanel(target) {
-        if (target !== this.activeSelection || this.isOpen === false) {
-            this.selectLocation(target);
-            this.openPanel();
-        } else if ((target === this.activeSelection) && this.isOpen === true) {
-            this.closePanel();
+    clearSelections() {
+        for (const i in this.locations) {
+            this.locations[i].selected = false;
         }
     }
 
-    ngOnInit(): void {
-        this.http.get('https://s3.amazonaws.com/br-codingexams/restaurants.json').subscribe(res => {
-            this.locations = res['restaurants'];
-        });
+    toggleLocation(target) {
+        this.clearSelections();
+        if (target !== this.activeSelection || !this.isOpen) {
+            this.activeSelection = target;
+            this.openPanel();
+        } else if ((target === this.activeSelection) && this.isOpen) {
+            this.closePanel();
+        }
+        this.allLocations = false;
+        target.selected = true;
     }
 }

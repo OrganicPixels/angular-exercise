@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 export class Contact {
     phone: string;
     formattedPhone: string;
@@ -21,5 +23,12 @@ export class Restaurant {
     category: string;
     contact: Contact;
     location: Location;
+    selected = false;
+    constructor(source: any) {
+        if (source) {
+            _.merge(this, source);
+        }
+    }
 }
+
 

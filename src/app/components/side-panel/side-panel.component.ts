@@ -20,19 +20,25 @@ import {Restaurant} from '../../classes/base';
     ]
 })
 export class SidePanelComponent  implements OnInit {
-    @Input() details: object;
-    @Input() locations: Restaurant;
+    @Input() details: Restaurant;
+    @Input() locations: any;
     @Input() isOpen = false;
-
-    @Input() allLocations: boolean;
+    @Input() allLocations = false;
     zoomLevel = 18;
+
     constructor(
     ) {}
 
     ngOnInit() {
     }
-    updateSelection(detail) {
-        this.details = detail;
-        this.allLocations = false;
+    clearSelections() {
+        let i = 0;
+        for (i  < this.locations.length; i++;) {
+            this.locations[i].selected = false;
+        }
+    }
+    updateSelection(target) {
+        this.clearSelections();
+        target.selected = true;
     }
 }
