@@ -7,7 +7,7 @@
             [fitBounds]="true"
             [streetViewControl]="false"
             [zoomControl]="false"
-            maxZoom="18"
+            maxZoom="15"
             [streetViewControlOptions]="false"
     >
         <ng-container *ngFor="let location of locations">
@@ -19,13 +19,15 @@
                     [iconUrl]="'assets/images/marker.png'"
                     class="flex-1"
             >
-                <agm-info-window>
+                <agm-info-window
+                    [isOpen]="location?.selected"
+                >
                     <article class="marker-info">
                         <header class="flex flex-align-center">
                             <img [src]="location?.backgroundImageURL" [alt]="location?.name"/>
-                            <h1 class="text-large">{{location?.name}}</h1>
+                            <h1 class="">{{location?.name}}</h1>
                         </header>
-                        <footer class="flex flex-align-center flex-space-between pt3">
+                        <footer class="flex flex-align-center flex-space-between pt3 text-small-x">
                             <a [href]="location?.contact?.phone">{{location?.contact?.formattedPhone}}</a>
                             <span class="pl3">{{location?.category}}</span>
                         </footer>
@@ -42,7 +44,8 @@
     </section>
     <section class="py3 color-bg-white flex-1 scroll-container">
         <ng-container *ngFor="let restaurant of locations; let id = $index" >
-            <article *ngIf="allLocations || (!allLocations && restaurant.selected)"  class="py3 pl3" [class.border-bottom]="allLocations"
+            <article *ngIf="allLocations || (!allLocations && restaurant.selected)"  class="py3 pl3 pointer"
+                     [ngClass]="{'selected': allLocations && restaurant.selected, 'border-bottom' : allLocations}"
                      (click)="updateSelection(restaurant)">
                 <h1 class="font-bold pb3">{{restaurant?.name}}</h1>
                 <p>

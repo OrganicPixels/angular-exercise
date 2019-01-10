@@ -35,6 +35,11 @@
     box-sizing: border-box;
   }
 
+  .scroll-container article.selected  {
+      background-color: $color-accent-2;
+      color: $white;
+  }
+
   @media only screen and (max-device-width : 1024px) and (orientation : portrait) {
     max-width: 20rem;
   }
