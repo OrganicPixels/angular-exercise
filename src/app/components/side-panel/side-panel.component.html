@@ -1,5 +1,4 @@
 <div [@panelState]="isOpen ?   'hide' : 'show'" id="side-panel">
-    <!--<pre>{{details | json}}</pre>-->
     <agm-map
             [latitude]="location?.location?.lat"
             [longitude]="location?.location?.lng"
@@ -41,26 +40,16 @@
         <p class="text-small" *ngIf="!allLocations">{{details?.category}}</p>
     </section>
     <section class="py3 color-bg-white flex-1 scroll-container">
-        <ng-container *ngIf="!allLocations" class="pl3">
-            <article class="pl3">
-                <p class="pb5">
-                    {{details?.location.address}}<br>
-                    {{details?.location.city}}, {{details?.location.state}} {{details?.location.postalCode}}
-                </p>
-                <p class="pb5">{{details?.contact?.formattedPhone}}</p>
-                <p *ngIf="details?.contact?.twitter">@{{details?.contact?.twitter}}</p>
-            </article>
-        </ng-container>
-        <ng-container *ngIf="allLocations">
-            <article *ngFor="let restaurant of locations; let id = $index" class="py3 pl3" [class.border-bottom]="allLocations"
+        <ng-container *ngFor="let restaurant of locations; let id = $index" >
+            <article *ngIf="allLocations || (!allLocations && restaurant.selected)"  class="py3 pl3" [class.border-bottom]="allLocations"
                      (click)="updateSelection(restaurant)">
-                <h1 class="font-bold pb3">{{restaurant?.name}}</h1>
-                <p>
+                <h1 class="font-bold pb3" *ngIf="allLocations">{{restaurant?.name}}</h1>
+                <p class="pb5">
                     {{restaurant?.location.address}}<br>
                     {{restaurant?.location.city}}, {{restaurant?.location.state}} {{restaurant?.location.postalCode}}
                 </p>
-                <p class="pt3">{{restaurant?.contact?.formattedPhone}}</p>
-                <p class="pt3" *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
+                <p class="pb5">{{restaurant?.contact?.formattedPhone}}</p>
+                <p *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
             </article>
         </ng-container>
     </section>
