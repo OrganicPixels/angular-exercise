@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
     }
 
     clearSelections() {
-        for (const i in this.locations) {
+        let i = 0;
+        for (i  < this.locations.length; i++;) {
             this.locations[i].selected = false;
         }
     }
