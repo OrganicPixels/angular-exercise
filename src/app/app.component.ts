@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     }
 
     toggleFullMap() {
+        this.clearSelections();
         this.allLocations ? this.closePanel() : this.openPanel();
         this.allLocations = !this.allLocations;
     }
