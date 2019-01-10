@@ -23,7 +23,7 @@
                     <article class="marker-info">
                         <header class="flex flex-align-center">
                             <img [src]="location?.backgroundImageURL" [alt]="location?.name"/>
-                            <h1>{{location?.name}}</h1>
+                            <h1 class="text-large">{{location?.name}}</h1>
                         </header>
                         <footer class="flex flex-align-center flex-space-between pt3">
                             <a [href]="location?.contact?.phone">{{location?.contact?.formattedPhone}}</a>
@@ -34,10 +34,11 @@
             </agm-marker>
         </ng-container>
     </agm-map>
-    <section class="color-bg-2 white p3">
-        <h1>
+    <section class="color-bg-2 white p3 flex flex-justify-center flex-column title-container">
+        <h1 class="font-secondary">
             {{ allLocations ? 'Restaurants' : details?.name}}
         </h1>
+        <p class="text-small" *ngIf="!allLocations">{{details?.category}}</p>
     </section>
     <section class="py3 color-bg-white flex-1 scroll-container">
         <ng-container *ngIf="!allLocations" class="pl3">

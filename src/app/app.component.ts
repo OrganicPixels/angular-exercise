@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Restaurant } from './classes/base';
 
 @Component({
@@ -10,9 +10,9 @@ import { Restaurant } from './classes/base';
 
 export class AppComponent implements OnInit {
     locations: Restaurant[];
+    activeSelection: Restaurant = null;
     isOpen = false;
     allLocations = false;
-    private activeSelection: Restaurant = null;
 
     constructor(private http: HttpClient) { }
 

@@ -25,12 +25,12 @@ article {
     flex-basis: 100%;
   }
 
-
   footer {
     z-index: 2;
   }
+
   .overlay {
-    content: url('/assets/images/cellGradientBackground@2x.png');
+    content: url('src/assets/images/cellGradientBackground@2x.png');
     position: absolute;
     bottom: 0;
     height: 100%;
@@ -38,6 +38,7 @@ article {
     z-index: 1;
   }
 }
+
 main {
   transition: max-width 200ms ease-in-out;
   max-width: 100%;
