@@ -47,13 +47,13 @@
             <article *ngIf="allLocations || (!allLocations && restaurant.selected)"  class="py3 pl3 pointer"
                      [ngClass]="{'selected': allLocations && restaurant.selected, 'border-bottom' : allLocations}"
                      (click)="updateSelection(restaurant)">
-                <h1 class="font-bold pb3">{{restaurant?.name}}</h1>
-                <p>
+                <h1 class="font-bold pb3" *ngIf="allLocations">{{restaurant?.name}}</h1>
+                <p class="pb5">
                     {{restaurant?.location.address}}<br>
                     {{restaurant?.location.city}}, {{restaurant?.location.state}} {{restaurant?.location.postalCode}}
                 </p>
-                <p class="pt3">{{restaurant?.contact?.formattedPhone}}</p>
-                <p class="pt3" *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
+                <p class="pb5">{{restaurant?.contact?.formattedPhone}}</p>
+                <p *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
             </article>
         </ng-container>
     </section>
