@@ -141,4 +141,5 @@
 .scroll-container {
     overflow-y: scroll;
     overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 }
