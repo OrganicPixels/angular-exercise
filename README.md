@@ -9,6 +9,8 @@ Once all of the dependencies have ran, type `npm start` in the terminal to view 
 
 The app should automatically open your browser and navigate to `http://localhost:5200/`
 
+If you would like to avoid all that. You can open the dist folder and and just open the index.html file.   
+
 Feel free to reach out if you have any issues.
 \
 Thanks for your consideration... 
