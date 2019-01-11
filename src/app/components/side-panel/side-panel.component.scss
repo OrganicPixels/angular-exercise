@@ -27,7 +27,7 @@
   max-width: 24rem;
   box-shadow: .02em 0 2em 0 rgba(0,0,0, 0.3);
   height: calc(100% - 3rem);
-  appearance: none;
+  -webkit-appearance: none;
   transform: translateX(106%);
 
   .title-container {
@@ -43,7 +43,7 @@
   @media only screen and (max-device-width : 1024px) and (orientation : portrait) {
     max-width: 20rem;
   }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 415px) {
       max-width: 100%;
   }
 }

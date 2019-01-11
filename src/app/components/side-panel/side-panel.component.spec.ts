@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SidePanelComponent } from './side-panel.component';
-import { TweenMax, Power3 } from 'gsap';
 
 describe('SidePanelComponent', () => {
   let component: SidePanelComponent;

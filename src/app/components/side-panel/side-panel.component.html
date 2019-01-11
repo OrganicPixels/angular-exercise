@@ -2,7 +2,7 @@
     <agm-map
             [latitude]="location?.location?.lat"
             [longitude]="location?.location?.lng"
-            [zoom]="zoomLevel"
+            [zoom]="18"
             [fitBounds]="true"
             [streetViewControl]="false"
             [zoomControl]="false"
@@ -23,7 +23,7 @@
                     <article class="marker-info">
                         <header class="flex flex-align-center">
                             <img [src]="location?.backgroundImageURL" [alt]="location?.name"/>
-                            <h1 class="">{{location?.name}}</h1>
+                            <h1 class="font-secondary">{{location?.name}}</h1>
                         </header>
                         <footer class="flex flex-align-center flex-space-between pt3 text-small-x">
                             <a [href]="'tel:'+location?.contact?.phone">{{location?.contact?.formattedPhone}}</a>
@@ -46,12 +46,12 @@
                      [ngClass]="{'selected': allLocations && restaurant.selected, 'border-bottom' : allLocations}"
                      (click)="updateSelection(restaurant)">
                 <h1 class="font-bold pb3" *ngIf="allLocations">{{restaurant?.name}}</h1>
-                <p class="pb5">
+                <p>
                     {{restaurant?.location.address}}<br>
                     {{restaurant?.location.city}}, {{restaurant?.location.state}} {{restaurant?.location.postalCode}}
                 </p>
-                <p class="pb5">{{restaurant?.contact?.formattedPhone}}</p>
-                <p *ngIf="restaurant?.contact?.twitter">@{{restaurant?.contact?.twitter}}</p>
+                <p *ngIf="restaurant?.contact?.formattedPhone" class="pt5">{{restaurant?.contact?.formattedPhone}}</p>
+                <p *ngIf="restaurant?.contact?.twitter" class="pt5">@{{restaurant?.contact?.twitter}}</p>
             </article>
         </ng-container>
     </section>

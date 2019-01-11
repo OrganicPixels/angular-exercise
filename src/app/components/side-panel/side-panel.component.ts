@@ -19,12 +19,12 @@ import { Restaurant } from '../../classes/base';
         ])
     ]
 })
+
 export class SidePanelComponent  implements OnInit {
     @Input() details: Restaurant;
     @Input() locations: any;
     @Input() isOpen = false;
     @Input() allLocations = false;
-    zoomLevel = 18;
 
     constructor() {}
 
@@ -35,6 +35,7 @@ export class SidePanelComponent  implements OnInit {
             this.locations[i].selected = false;
         }
     }
+
     updateSelection(target) {
         this.clearSelections();
         target.selected = true;
