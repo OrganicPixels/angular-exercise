@@ -16,6 +16,7 @@
                     [longitude]="location?.location.lng"
                     [title]="location?.name"
                     [agmFitBounds]="location.selected || allLocations"
+                    [visible]="location.selected || allLocations"
                     [iconUrl]="'assets/images/marker.png'"
                     class="flex-1"
             >
