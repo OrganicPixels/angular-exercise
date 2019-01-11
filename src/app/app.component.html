@@ -11,10 +11,10 @@
 <main class="flex flex-wrap" [class.active]="isOpen">
     <ng-container *ngFor="let location of locations">
         <article
-                class="flex flex-1 pt30 card pointer"
+                class="flex flex-1 card pointer"
                 (click)="toggleLocation(location)"
                 [ngStyle]="{ 'background-image': 'url(' + location.backgroundImageURL + ')'}">
-            <footer class="white pb1 pl2">
+            <footer class="white pl3">
                 <p class="font-secondary">
                     {{location.name}}
                 </p>

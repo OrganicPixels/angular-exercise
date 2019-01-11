@@ -18,6 +18,7 @@ article {
   background: no-repeat center;
   background-size: cover;
   flex-basis: 50%;
+  min-height: 11.25rem;
   @media only screen and (max-device-width : 1024px)  and (orientation : portrait) {
     flex-basis: 22rem;
   }
@@ -27,6 +28,8 @@ article {
 
   footer {
     z-index: 2;
+    padding-bottom: 0.375em;
+    align-self: flex-end;
   }
 
   .overlay {
