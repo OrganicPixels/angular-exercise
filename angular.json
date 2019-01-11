@@ -28,11 +28,7 @@
             ],
             "styles": [
               "src/styles/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/gsap/src/uncompressed/TweenMax.js",
-              "node_modules/gsap/src/uncompressed/utils/Draggable.js"
-            ],
+            ]
           },
           "configurations": {
             "production": {
@@ -49,7 +45,7 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
