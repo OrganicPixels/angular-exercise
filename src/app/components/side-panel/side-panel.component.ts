@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import {Restaurant} from '../../classes/base';
+import { Restaurant } from '../../classes/base';
 
 @Component({
     selector: 'app-side-panel',
@@ -26,11 +26,10 @@ export class SidePanelComponent  implements OnInit {
     @Input() allLocations = false;
     zoomLevel = 18;
 
-    constructor(
-    ) {}
+    constructor() {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
+
     clearSelections() {
         for (const i in this.locations) {
             this.locations[i].selected = false;

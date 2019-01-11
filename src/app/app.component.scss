@@ -19,6 +19,7 @@ article {
   background-size: cover;
   flex-basis: 50%;
   min-height: 11.25rem;
+
   @media only screen and (max-device-width : 1024px)  and (orientation : portrait) {
     flex-basis: 22rem;
   }

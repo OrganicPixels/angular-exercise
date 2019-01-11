@@ -13,7 +13,7 @@ If you would like to avoid all that. You can open the dist folder and and just o
 
 Also, I've made a compiled version available on codepen if you'd just like to see it in action.  You can view that here.
 
-https://codepen.io/OrganicPixels/project/full/ANnqWP
+http://jasongriffith.com/bottle-rocket/
 
 Feel free to reach out if you have any issues.
 \
